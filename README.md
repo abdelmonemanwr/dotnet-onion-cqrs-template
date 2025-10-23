@@ -41,3 +41,57 @@ Install this template onto your local machine by pointing `dotnet new` to your G
 
 ```bash
 dotnet new install https://github.com/abdelmonemanwr/dotnet-onion-cqrs-template
+```
+
+### 2. Install the Template (from Local Path)
+
+Navigate into the cloned repository's root folder and run the dotnet new install command. This registers the template with your .NET SDK.
+
+```bash
+# Navigate into the folder you just cloned
+cd dotnet-onion-cqrs-template
+
+# Install the template from the current folder
+dotnet new install .
+```
+
+### 3. Create Your New Project
+
+Now that the template is installed locally, you can use it from any folder to generate your new project structure. The template automatically renames projects and namespaces.
+
+```bash
+# Go to your projects directory (e.g., D:\myProjects)
+cd D:\myProjects
+
+# "my-onion-api" is the 'shortName' from template.json.
+# "MyAwesomeProject" is your new project name.
+dotnet new my-onion-api -n MyAwesomeProject
+```
+
+### 4. Configure appsettings.json
+
+Before you can run the project, you must update the appsettings.Development.json file inside the generated API project (MyAwesomeProject.Api) with your local settings.
+
+```json
+{
+  "ConnectionStrings": {
+    // 👇 Update this with your local SQL Server details
+    "DefaultConnection": "Server=.;Database=MyAwesomeDb;Trusted_Connection=True;TrustServerCertificate=True;"
+  },
+  "JwtSettings": {
+    "Issuer": "MyAwesomeApi",
+    "Audience": "MyAwesomeApiClient",
+    "Key": "REPLACE_THIS_WITH_A_VERY_LONG_AND_SECRET_KEY_123456" // 👈 CRITICAL
+  },
+  "GoogleSettings": {
+    "ClientId": "YOUR_GOOGLE_CLIENT_ID_GOES_HERE",
+    "ClientSecret": "YOUR_GOOGLE_CLIENT_SECRET_GOES_HERE"
+  }
+}
+```
+
+### 5. Run the Project
+
+That's it! Open the new solution (MyAwesomeProject.sln), set MyAwesomeProject.Api as the startup project, and hit Run (F5).
+
+The application will start, automatically run database migrations (DbUp), and launch a browser opening the Swagger UI, ready for testing.
