@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Abdalmonem Anwar",
+  "classifications": [ "Web API", "C#", "Onion", "CQRS" ],
+  "identity": "My.OnionCqrs.Template",
+  "name": "My Custom Onion CQRS API Template",
+  "shortName": "my-onion-api",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "MyProject"
+}
